@@ -1,0 +1,3 @@
+include ':android-country-states'
+include ':app'
+rootProject.name = "StateApp"
