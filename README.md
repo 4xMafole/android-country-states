@@ -1,7 +1,8 @@
 # android-country-states
 An android library which populates every country information.
 _________________________
-[![](https://jitpack.io/v/4xMafole/beem-android-client.svg)](https://jitpack.io/#4xMafole/beem-android-client) [![](https://img.shields.io/badge/platform-android-orang)](https://img.shields.io/badge/platform-android-orange) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![](https://jitpack.io/v/4xMafole/android-country-states.svg)](https://jitpack.io/#4xMafole/android-country-states)
+ [![](https://img.shields.io/badge/platform-android-orang)](https://img.shields.io/badge/platform-android-orange) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 ## Supported Features
 - [x] States
@@ -30,54 +31,33 @@ Add this in your root ```build.gradle``` file (not on module ```build.gradle``` 
 ## Dependency
 Add this to your module's ```build.gradle```
 
-        dependencies 
+	dependencies 
         {
-                implementation 'com.github.4xMafole:beem-android-client:v0.1.0-beta'
-        }
+	        implementation 'com.github.4xMafole:android-country-states:v0.1.0-beta'
+	}
   
   ## How To Use
   
   - Allow internet permission in ```AndroidManifest.xml```
   
         <uses-permission android:name="android.permission.INTERNET"/>
- 
-  - Assigning Beem Credentials
+        
 
-        BeemCredentials.API_KEY = "<APP_API_KEY>";
-        BeemCredentials.BEEM_APP_ID = <APP_ID>;
-        BeemCredentials.SECRET_KEY = "<APP_SECRET_KEY>";
+### States
 
-        //Default urls | Change depending on the api's version.
-        BeemCredentials.REQUEST_URL = "https://apiotp.beem.africa/v1/request";
-        BeemCredentials.VERIFY_URL = "https://apiotp.beem.africa/v1/verify";
+- Initializing Client
 
-- Running OTP Service
+        StateClient client = new StateClient();
+        client.setCountry("<COUNTRY_NAME");
+        
+- Running State Service
 
-        OTPClient client = new OTPClient("<PHONE_NUMBER>");
         client.run();
         
-- Validating the pin
+- Getting the states
 
-        client.pinValidity("<PIN>");
-     
-- Checking pin validation ```success/failure```
+        ArrayList<String> states = client.statesList();
 
-        Handler handler = new Handler();
-        handler.postDelayed(() ->
-        {
-            if(client._isPin)
-            {
-                //Success
-                //...do something when pin is valid
-            }
-            else
-            {
-                //Failure
-                //...do something when pin is invalid
-            }
-        }, 30000);
-        
-Using a ```handler``` to create a 30 second delay.
 
 ## Contribution
 Please fork this repository and contribute back using [pull requests](https://github.com/4xMafole/android-country-states/pulls).
